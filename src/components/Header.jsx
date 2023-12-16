@@ -1,16 +1,24 @@
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-black justify-content-between ">
       <div className="container">
-        <h1>Crud con Redux</h1>
+        <h1>
+          <Link
+            to={"/"}
+            className="text-light"
+          >
+            Hola
+          </Link>
+        </h1>
       </div>
-      <a
+      <Link
         className="btn btn-danger new-post d-block d-md-inline-block"
-        href="/products/new"
+        to={"/products/new"}
       >
         Add Product &#43;
-      </a>
+      </Link>
     </nav>
   );
 }
