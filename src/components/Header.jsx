@@ -9,7 +9,7 @@ const Header = () => {
             to={"/"}
             className="text-light"
           >
-            App to List Different Products
+            List Different Products
           </Link>
         </h1>
       </div>
