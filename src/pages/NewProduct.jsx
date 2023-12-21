@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { createNewActionProduct } from "../actions/actionsProduct.js";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const NewProduct = () => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const loading = useSelector(state => state.products.loading);
+  const error = useSelector(state => state.products.error);
 
   const addProduct = (product) => dispatch(createNewActionProduct(product));
     
@@ -22,6 +27,7 @@ const NewProduct = () => {
       price
     });
 
+    navigate("/");
   }
 
   return (
@@ -62,6 +68,14 @@ const NewProduct = () => {
                 className="btn btn-primary font-weight-bold text-uppercase d-block w-100"
               />
             </form>
+
+            {loading ? <p>Loading...</p> : null}
+            {error ? (
+              <p className="alert alert-danger bg-error p-2 mt-4 text-center">
+                There was a error
+              </p>
+            ) : null}
+            
           </div>
         </div>
       </div>

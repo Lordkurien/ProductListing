@@ -61,3 +61,7 @@ h1 a.text-light:hover {
   background-color: black !important;
 }
 
+.bg-error {
+  background-color: #D9534F !important;
+}
+

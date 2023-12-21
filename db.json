@@ -2,16 +2,16 @@
   "productos": [
     {
       "id": 1,
-      "nombre": "Jugo de Zanahoria",
+      "nombre": "Carrot Juice ",
       "precio": "300"
     },
     {
       "id": 2,
-      "nombre": "Jugo de Naranja",
+      "nombre": "Orange Juice",
       "precio": "1"
     },
     {
-      "nombre": "Jugo de Naranja",
+      "nombre": "Apple Juice",
       "precio": "300",
       "id": 3
     },
@@ -21,10 +21,24 @@
       "id": 4
     },
     {
-      "nombre": "Jugo de Fresa",
+      "nombre": "Strawberry Juice",
       "precio": "200",
       "id": 5
+    },
+    {
+      "name": "jugo de anana",
+      "price": 200,
+      "id": 6
+    },
+    {
+      "name": "jugo de pera",
+      "price": 500,
+      "id": 7
+    },
+    {
+      "name": "jugo light",
+      "price": 5000,
+      "id": 8
     }
   ]
 }
-
