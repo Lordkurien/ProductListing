@@ -61,7 +61,22 @@ h1 a.text-light:hover {
   background-color: black !important;
 }
 
+.bg-edit {
+  background-color: #007BFF !important;
+}
+
+.bg-edit:hover{
+  background-color: #074e9b !important;
+}
+
 .bg-error {
   background-color: #D9534F !important;
 }
 
+.bg-delete {
+  background-color: #DC3545!important;
+}
+
+.bg-delete:hover {
+  background-color: #91212c !important;
+}
