@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import PropTypes from 'prop-types';
-import { deleteProductsAction } from "../actions/actionsProduct";
+import {
+  deleteProductsAction,
+  getProductEdit,
+} from "../actions/actionsProduct";
 import Swal from "sweetalert2";
 
 const Product = ({ product }) => {
   const { name, price, id } = product;
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const deleteProduct = id => {
 
@@ -42,6 +47,11 @@ const Product = ({ product }) => {
       });
   }
 
+  const redirectEdit = product => {
+    dispatch(getProductEdit(product));
+    navigate(`/products/edit/${product.id}`);
+  }
+
   return (
     <tr>
       <td>{name}</td>
@@ -49,12 +59,13 @@ const Product = ({ product }) => {
         <span className="font-weight-bold ">${price}</span>
       </td>
       <td className="acciones">
-        <Link
+        <button
           className="btn btn-primary bg-edit bg-edit:hover mr-2"
-          to={`/products/edit/${id}`}
+          type="button"
+          onClick={() => redirectEdit(product)}
         >
           Edit
-        </Link>
+        </button>
         <button
           className="btn btn-danger bg-delete bg-delete:hover "
           type="button"

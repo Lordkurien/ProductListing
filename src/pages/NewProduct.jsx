@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createNewActionProduct } from "../actions/actionsProduct.js";
+import { showAlert, hideAlertAction } from "../actions/actionsAlert.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +13,7 @@ const NewProduct = () => {
 
   const loading = useSelector(state => state.products.loading);
   const error = useSelector(state => state.products.error);
+  const alert = useSelector(state => state.alert.alert);
 
   const addProduct = (product) => dispatch(createNewActionProduct(product));
     
@@ -19,8 +21,15 @@ const NewProduct = () => {
     e.preventDefault();
 
     if (name.trim() === "" || price <= 0) {
+      const alert = {
+        msg: "All fields are required",
+        className: "alert alert-danger bg-error text-center text-uppercase  p3",
+      };
+      dispatch(showAlert(alert));
       return;
     }
+
+    dispatch(hideAlertAction());
 
     addProduct({
       name,
@@ -36,6 +45,8 @@ const NewProduct = () => {
         <div className="card">
           <div className="card-body">
             <h2 className="text-center mb-4 font-weight-bold">New Product</h2>
+
+            {alert ? <p className={alert.className}>{alert.msg}</p> : null}
 
             <form onSubmit={handleNewProduct}>
               <div className="form-group">
