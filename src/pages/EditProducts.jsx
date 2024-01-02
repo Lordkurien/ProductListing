@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editProductAction } from "../actions/actionsProduct.js";
@@ -9,20 +9,22 @@ const EditProducts = () => {
 
   const [product, setProduct] = useState({
     name: "",
-    price: 0,
+    price: "",
   });
-  
-  const editproduct = useSelector((state) => state.products.editproduct);
-  // if (!product) return null;
 
-  useEffect(() => { 
-    setProduct(editproduct);
-  }, [editproduct]);
-  
+  const editProduct = useSelector((state) => state.products.editproduct);
+
+  useEffect(() => {
+    console.log(editProduct);
+    setProduct(editProduct);
+  }, []);
+
+  if (!product) return <Navigate to="/" />;
+
   const onChangeForm = (e) => {
     setProduct({
       ...product,
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -48,6 +50,7 @@ const EditProducts = () => {
                 <input
                   id="name"
                   type="text"
+                  name="name"
                   className="form-control"
                   placeholder="Name"
                   value={name}
@@ -61,6 +64,7 @@ const EditProducts = () => {
                   id="price"
                   type="number"
                   className="form-control"
+                  name="price"
                   placeholder="Price"
                   value={price}
                   onChange={onChangeForm}
